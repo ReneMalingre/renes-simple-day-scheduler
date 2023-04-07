@@ -8,8 +8,9 @@
 // Colours are used to indicate the status of each time block (past, present, future).
 // The user can click on a time block to edit the event entry.
 
-
+// =================================================================================================
 // Classes
+// =================================================================================================
 // TimeStatus to hold constants for the status of a TimeBlock
 // used to set class names for the time blocks
 class TimeStatus {
@@ -18,6 +19,7 @@ class TimeStatus {
   static Future = 'future';
 }
 
+// =================================================================================================
 // TimeBlock
 // Contains StartTime, EndTime, Schedule Entry
 // Has a property to determine if the TimeBlock is in the past, present, or future
@@ -48,6 +50,7 @@ class TimeBlock {
   }
 }
 
+// =================================================================================================
 // Schedule
 // Contains a collection of TimeBlocks and the date they represent
 // Parameters are the start and end date-times of the schedule (dayjs objects)
@@ -127,17 +130,17 @@ class Schedule {
       row.attr('id', 'hour-' + i);
 
       // create a new column for the time
-      const timeCol = $('<div>').addClass('col-2 col-md-1 hour text-center py-3');
+      const timeCol = $('<div>').addClass('col-2 col-lg-1 hour text-center py-3');
       // set the text for the time column
       timeCol.text(this.timeBlocks[i].startTime.format('h a'));
 
       // create a new column for the event entry
-      const eventCol = $('<textarea>').addClass('col-8 col-md-10 description');
+      const eventCol = $('<textarea>').addClass('col-8 col-lg-10 description');
       // set the text for the event column
       eventCol.text(this.timeBlocks[i].eventEntry);
 
       // create a new column for the save button
-      const saveCol = $('<button>').addClass('btn saveBtn col-2 col-md-1');
+      const saveCol = $('<button>').addClass('btn save-btn col-2 col-lg-1');
       // set the aria label for the save button
       saveCol.attr('aria-label', 'save');
       // create an italic tag for the save button
@@ -230,17 +233,16 @@ class Schedule {
   }
   // deserialize the schedule from JSON
   deserializeFromJSON(json) {
-    // console.log(json);
     this.startTime = dayjs(json.startTime);
     this.endTime = dayjs(json.endTime);
     this.timeBlocks = [];
     for (let i = 0; i < json.timeBlocks.length; i++) {
-      // console.log(json.timeBlocks[i].startTime + ' ' + json.timeBlocks[i].endTime + ' ' + json.timeBlocks[i].eventEntry);
       this.timeBlocks.push(new TimeBlock(dayjs( json.timeBlocks[i].startTime), dayjs( json.timeBlocks[i].endTime), json.timeBlocks[i].eventEntry));
     }
   }
 }
 
+// =================================================================================================
 // Diary
 // Contains Schedules, representing the schedule for a particular day
 // Contains Current Date displayed
@@ -280,7 +282,6 @@ class Diary {
     const diary = localStorage.getItem('diary');
     // if diary exists, deserialize it
     if (diary) {
-      // console.log(diary);
       this.deserializeFromString(diary);
     }
   }
@@ -297,7 +298,19 @@ class Diary {
     const schedule = this.getScheduleByDate(this.currentDate);
 
     // show the current date
-    $('#currentDay').text(schedule.startTime.format('dddd, D MMMM, YYYY'));
+    const currentDay= $('#currentDay');
+    currentDay.text(schedule.startTime.format('dddd, D MMMM, YYYY'));
+    // highlight today's date
+    if (this.currentDate.isSame(dayjs(), 'date')) {
+      currentDay.removeClass('alert-dark');
+      currentDay.addClass('alert-info');
+      $('#date-today').prop('disabled', true);
+    }
+    else {
+      currentDay.removeClass('alert-info');
+      currentDay.addClass('alert-dark');
+      $('#date-today').prop('disabled', false);
+    }
 
     // tell this schedule to render itself within the schedule-container div
     schedule.renderSchedule('schedule-container');
@@ -372,7 +385,10 @@ class Diary {
     this.currentDate= dayjs();
   }
 }
+// =================================================================================================
 
+// =================================================================================================
+// Main Program
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
@@ -396,8 +412,9 @@ $(function() {
     diary.updateTimeColors();
   }, 120000);
 
-  // add event listeners
-  $('#schedule-container').on('click', '.saveBtn', function(event) {
+  // when the user clicks one of the the save buttons, save the event to the
+  // Diary.Schedule.TimeBlock, and save the diary to local storage
+  $('#schedule-container').on('click', '.save-btn', function(event) {
     // get the id of the time-block that contains the button that was clicked
     const timeBlockId = $(this).parent().attr('id');
     // extract the index representing the hour from the id
@@ -414,6 +431,9 @@ $(function() {
     diary.saveToLocalStorage();
   });
 
+  // when the user clicks one of the date navigation buttons, update the current
+  // date and render the schedule for the new date, and give the user some
+  // cues about if today's date is currently being displayed
   $('#date-navigation').on('click', '.date-nav-link', function(event) {
     // select the date navigation link that was clicked
     const dateNavLink = $(this).attr('id');
@@ -428,7 +448,7 @@ $(function() {
         diary.goToNextDay();
         break;
       default:
-        console.log('invalid date navigation link');
+        break;
     }
     return;
   });

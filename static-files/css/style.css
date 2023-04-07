@@ -1,14 +1,47 @@
-body {
-  font-family: 'Open Sans', sans-serif;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --text-entry-color: #000;
+  --border-color:#343a40;
+  --border-color-light:#f8f9fa;
+  --hour-background:#fff;
+  --save-icon-color:#fff;
+  --text-default-color:#343a40;
+  --color-info: #17a2b8;
+  --color-primary:#007bff;
+  --color-past: #d3d3dd;
+  --color-present:#dc6575;
+  --color-future:#28c765;
+  --border-radius: 15px;
+  
   font-size: 16px;
+}
+
+body {
+  font-family: 'Fira Sans', 'Open Sans', sans-serif;
+  background-color: var(--border-color-light);
+  color: var(--text-default-color);
+}
+
+.custom-width-date{
+  width: 50ch;
+  align-self: center;
+  margin: 0 auto 1rem;
 }
 
 textarea {
   background: transparent;
   border: none;
   resize: none;
-  color: #000000;
-  border-left: 1px solid black;
+  color: var(--text-entry-color);
+  border-left: 1px solid var(--border-color);
   padding: 10px;
 }
 
@@ -17,43 +50,49 @@ textarea {
 }
 
 .time-block {
-  border-radius: 15px;
+  border-radius: var(--border-radius);
 }
 
 .row {
-  border-top: 1px solid white;
+  border-top: 1px solid var(--border-color-light);
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  background-color: var(--hour-background);
+  color: var(--text-default-color);
+  border-top: 1px dashed  var(--border-color);
 }
 
 .past {
-  background-color: #d3d3d3;
-  color: white;
+  background-color: var(--color-past);
 }
 
 .present {
-  background-color: #ff6961;
-  color: white;
+  background-color: var(--color-present);
 }
 
 .future {
-  background-color: #77dd77;
-  color: white;
+  background-color: var(--color-future);
 }
 
-.saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: white;
+.save-btn {
+  border-left: 1px solid  var(--border-color);
+  border-top-right-radius:  var(--border-radius);
+  border-bottom-right-radius:  var(--border-radius);
+  background-color: var(--color-info);
+  color: var(--save-icon-color);
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
+.save-btn i {
+  font-size:24px;
+}
+
+.save-btn:hover i{
+  color: var(--color-primary);
+}
+
+.save-btn i:hover {
+  font-size: 32px;
+  color: var(--color-primary);
+  transition: all 0.2s ease-in-out;
 }

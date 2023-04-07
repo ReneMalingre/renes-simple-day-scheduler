@@ -4,35 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!----  normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
+        normalize styles to standard values across browsers -->
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/jquery-ui/themes/base/autocomplete.min.css"
-      rel="stylesheet"
-    />
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- my stylesheet  -->
     <link rel="stylesheet" href="./static-files/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
   <body>
-    <header class="p-2 text-center">
+    <header class="container p-1 px-md-2 text-center">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead"></p>
+      <p id="currentDay" class="alert alert-info custom-width-date"></p>
       <div id="date-navigation">
         <button
           type="button"
@@ -57,10 +63,18 @@
         </button>
       </div>
     </header>
-
-    <!-- container to hold the diary schedule -->
-    <div class="container-fluid px-5" id="schedule-container"></div>
-
+    <main>
+      <!-- container to hold the diary schedule -->
+      <div class="container-fluid px-2 px-md-5" id="schedule-container"></div>
+    </main>
+    <footer>
+      <div class="container-fluid text-center my-3">
+        <p class="instructions my-0">Type your event into the coloured text area then press the save icon.</p>
+        <p class="lead">
+          &#169 René Malingré 2023
+        </p>
+      </div>
+    </footer>
     <!-- latest jQuery as of 6 April 2023 -->
     <script
       src="https://code.jquery.com/jquery-3.6.4.min.js"

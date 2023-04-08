@@ -70,9 +70,9 @@ Clone the repository to your local machine and open the `index.html` file in you
 
 ## Live URL and Repository
 
-The live application can be accessed at the following URL: [Rene's Simple Day Scheduler](https://renemalingre.github.io/Softworks-JS-Coding-Quiz/)
+The live application can be accessed at the following URL: [Rene's Simple Day Scheduler](https://renemalingre.github.io/renes-simple-day-scheduler/)
 
-The repository can be accessed at the following URL: [Rene's Simple Day Scheduler Repository](https://renemalingre.github.io/renes-simple-day-scheduler/)
+The repository can be accessed at the following URL: [Rene's Simple Day Scheduler Repository](https://github.com/ReneMalingre/renes-simple-day-scheduler)
 
 ## Credits
 

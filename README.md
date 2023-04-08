@@ -1,99 +1,99 @@
-# 05 Third-Party APIs: Work Day Scheduler
+# Simple Day Scheduler
 
-## Your Task
+This web application is a simple calendar application that allows a user to save events for each hour of the typical work day (9 am to 6 pm).
 
-Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+## Table of Contents
 
-You'll need to use the [Day.js](https://day.js.org/en/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Day.js in the browser.
+- [Features](#features)
+- [Installation and Usage](#installation-and-usage)
+- [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
+- [Live URL and Repository](#live-url-and-repository)
+- [Credits](#credits)
+- [Contributing](#contributing)
+- [License](#license)
 
-## User Story
+## Features
 
-```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
+ This app will run in the browser and features dynamically updated HTML and CSS powered by jQuery, Bootstrap and Javascript. It utilises the Day.js library to work with date and time. It saves events in local storage so that the events persist when the user refreshes the page.
 
-## Acceptance Criteria
+ The user is presented with the current day at the top of the calendar. Below that, the user is presented with 1-hour time blocks for standard business hours (9 am to 6 pm). Each time block is colour coded to indicate whether it is in the past, present, or future. The user can enter an event in the text area and click the save button to save the event to local storage. The user can then refresh the page and the event will still be there. The user can navigate to dates in the future or past by clicking the `Prev` or `Next` buttons, or return to the current date by pressing the `Today` button.
 
-```md
-GIVEN I am using a daily planner to create a schedule
-WHEN I open the planner
-THEN the current day is displayed at the top of the calendar
-WHEN I scroll down
-THEN I am presented with timeblocks for standard business hours
-WHEN I view the timeblocks for that day
-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-WHEN I click into a timeblock
-THEN I can enter an event
-WHEN I click the save button for that timeblock
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
-```
+## Installation and Usage
 
-The following animation demonstrates the application functionality:
+Clone the repository to your local machine and open the `index.html` file in your browser to view the quiz application, or go to the [live site](#live-url-and-repository).
 
-<!-- @TODO: create ticket to review/update image) -->
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+1. Open the application in your web browser.
+2. The Day Scheduler defaults to the current day.
+3. Navigate the your day of interest using the `Prev` or `Next` buttons, or return to the current day by pressing the `Today` button.
+4. Enter an event in the text area and click the save button to save the event to local storage.
+5. The events entered will be saved to local storage and will persist when the user refreshes the page.
 
-## Grading Requirements
+## Technologies Used
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+- HTML
+- CSS
+  - CSS Variables
+- Bootstrap CSS Framework
+  - Grid System
+  - Responsive Design
+  - Components
+- JavaScript
+  - DOM Manipulation
+  - Event Listeners
+  - Event Handlers
+  - Local Storage
+  - Functions
+  - Classes
+- Day.js
+  - Date and Time Library
+- jQuery
+  - DOM Manipulation
 
-This Challenge is graded based on the following criteria:
+## Screenshots
 
-### Technical Acceptance Criteria: 40%
+### Desktop Browser - Showing the colour coded time blocks
 
-* Satisfies all of the above acceptance criteria plus the following:
+![Screenshot of the application on a desktop browser, showing time block formatting](./docs/screenshot-desktop.png)
 
-  * Uses a date utility library to work with date and time
+### Mobile Browser
 
-### Deployment: 32%
+![Screenshot of the application on a mobile screen](./docs/screenshot-mobile.png)
 
-* Application deployed at live URL
+### Desktop Browser - Future Date
 
-* Application loads with no errors
+![Screenshot of the application on a future date](./docs/screenshot-desktop-next-day.png)
 
-* Application GitHub URL submitted
+### Desktop Browser - Past Date
 
-* GitHub repo contains application code
+![Screenshot of the application on a past date](./docs/screenshot-mobile-prev-day.png)
 
-### Application Quality: 15%
+## Live URL and Repository
 
-* Application user experience is intuitive and easy to navigate
+The live application can be accessed at the following URL: [Rene's Simple Day Scheduler](https://renemalingre.github.io/Softworks-JS-Coding-Quiz/)
 
-* Application user interface style is clean and polished
+The repository can be accessed at the following URL: [Rene's Simple Day Scheduler Repository](https://renemalingre.github.io/renes-simple-day-scheduler/)
 
-* Application resembles the mock-up functionality provided in the Challenge instructions
+## Credits
 
-### Repository Quality: 13%
+- Google Fonts for the typeface - [Fira Sans](https://fonts.google.com/specimen/Fira+Sans)
 
-* Repository has a unique name
+- Help from Mozilla [MDN Web Docs](https://developer.mozilla.org/) and OpenAI's [ChatGPT](https://chat.openai.com/chat) for providing insights into JavaScript, Bootstrap, jQuery and Day.js.
 
-* Repository follows best practices for file structure and naming conventions
+- Normalize.css v8.0.1 for the CSS reset: [Normalize.css](https://necolas.github.io/normalize.css/)
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
+- Bootstrap v5.1.3 for the CSS framework: [Bootstrap](https://getbootstrap.com/)
 
-* Repository contains multiple descriptive commit messages
+- Day.js v1.11.7 for the date and time library: [Day.js](https://day.js.org/)
 
-* Repository contains quality README file with description, screenshot, and link to deployed application
+- jQuery v3.6.4 for the JavaScript library: [jQuery](https://jquery.com/)
 
-## Review
+## Contributing
 
-You are required to submit the following for review:
+Contributions to this project will not be accepted, as this project is an assessment piece for a coding course, and it must be the project author's own work. However, feel free to fork the repository and make your own changes.
 
-* The URL of the deployed application
+## License
 
-* The URL of the GitHub repository, with a unique name and a README describing the project
+This project is licensed under the terms of the MIT license.
 
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+© 2023 René Malingré

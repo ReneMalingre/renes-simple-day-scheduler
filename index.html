@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Work Day Scheduler</title>
+    <meta name="description" content="A simple work-day event planner that uses local storage.">
+
     <!----  normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
         normalize styles to standard values across browsers -->
     <link rel="stylesheet" href="./assets/css/normalize.css" />
+
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -14,6 +18,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -21,6 +26,7 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,14 +37,19 @@
 
     <!-- my stylesheet  -->
     <link rel="stylesheet" href="./static-files/css/style.css" />
-    <title>Work Day Scheduler</title>
+    
   </head>
 
   <body>
+    <!-- header. Elements utilise Bootstrap for styles and responsiveness -->
     <header class="container p-1 px-md-2 text-center">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="alert alert-info custom-width-date"></p>
+
+      <!-- placeholder for the date of the displayed schedule. Formatted as a Bootstrap alert -->
+      <p id="currentDay" class="alert alert-info custom-alert-date"></p>
+
+      <!-- navigation buttons to move between days -->
       <div id="date-navigation">
         <button
           type="button"
@@ -63,35 +74,43 @@
         </button>
       </div>
     </header>
+
+    <!-- main content of the editable schedule for working hours -->
     <main>
-      <!-- container to hold the diary schedule -->
+      <!-- container to hold the diary schedule, generated in js -->
       <div class="container-fluid px-2 px-md-5" id="schedule-container"></div>
     </main>
+
+    <!-- footer -->
     <footer>
-      <div class="container-fluid text-center my-3">
+      <div class="container-fluid text-center my-2">
         <p class="instructions my-0">Type your event into the coloured text area then press the save icon.</p>
         <p class="lead">
           &#169 René Malingré 2023
         </p>
       </div>
     </footer>
-    <!-- latest jQuery as of 6 April 2023 -->
+
+    <!-- Javascript -->
+    <!-- jQuery
+      https://jquery.com/
+      latest jQuery as of 6 April 2023 -->
     <script
       src="https://code.jquery.com/jquery-3.6.4.min.js"
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
       crossorigin="anonymous"
     ></script>
 
-    <!-- jQuery UI -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery-ui/dist/jquery-ui.min.js"></script>
-
-    <!-- latest Day.js as of 6 April 2023 -->
+    <!-- Day.js Date Time API
+      https://day.js.org/
+      latest Day.js as of 6 April 2023 -->
     <script
       src="https://cdn.jsdelivr.net/npm/dayjs@1.11.7/dayjs.min.js"
       integrity="sha256-EfJOqCcshFS/2TxhArURu3Wn8b/XDA4fbPWKSwZ+1B8="
       crossorigin="anonymous"
     ></script>
 
+    <!-- This Web Application -->
     <script src="./static-files/js/script.js"></script>
   </body>
 </html>

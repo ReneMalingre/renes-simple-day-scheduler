@@ -2,11 +2,13 @@
 // Author: Rene Malingre
 // Date: 2023-04-07
 // Description: A simple day scheduler that allows the user to enter events for each hour of the day.
+// Cloned from https://github.com/coding-boot-camp/crispy-octo-meme
 // The user can navigate to previous and future days using the navigation buttons.
 // The current day is highlighted in the navigation buttons.
 // The user can save the schedule to local storage and load it from local storage.
 // Colours are used to indicate the status of each time block (past, present, future).
-// The user can click on a time block to edit the event entry.
+// The user can click on a time block to edit the event entry, and click a save button to save
+// to local storage.
 
 // =================================================================================================
 // Classes
@@ -29,7 +31,7 @@ class TimeBlock {
     this.endTime = end;
     this.eventEntry = event;
   }
-  timeStatus() {
+  getTimeStatus() {
     // get the current date and time
     const now = dayjs();
     const start = dayjs(this.startTime);
@@ -158,9 +160,9 @@ class Schedule {
       row.append(saveCol);
 
       // set the background color of the row based on the time status of the time block
-      if (this.timeBlocks[i].timeStatus() === TimeStatus.Past) {
+      if (this.timeBlocks[i].getTimeStatus() === TimeStatus.Past) {
         row.addClass('past');
-      } else if (this.timeBlocks[i].timeStatus() === TimeStatus.Present) {
+      } else if (this.timeBlocks[i].getTimeStatus() === TimeStatus.Present) {
         row.addClass('present');
       } else {
         row.addClass('future');
@@ -180,12 +182,12 @@ class Schedule {
       // remove the past, present and future classes
 
       // set the background color of the row based on the time status of the time block
-      if (this.timeBlocks[i].timeStatus() === TimeStatus.Past) {
+      if (this.timeBlocks[i].getTimeStatus() === TimeStatus.Past) {
         if (!row.hasClass('past')) {
           row.removeClass('present future');
           row.addClass('past');
         }
-      } else if (this.timeBlocks[i].timeStatus() === TimeStatus.Present) {
+      } else if (this.timeBlocks[i].getTimeStatus() === TimeStatus.Present) {
         if (!row.hasClass('present')) {
           row.removeClass('past future');
           row.addClass('present');
@@ -200,6 +202,7 @@ class Schedule {
   }
 
   // check if the schedule has any events
+  // useful to avoid saving empty schedules
   hasEvents() {
     for (let i = 0; i < this.timeBlocks.length; i++) {
       if (this.timeBlocks[i].eventEntry !== '') {
@@ -405,6 +408,7 @@ $(function() {
   diary.currentDate = dayjs();
   diary.renderSchedule();
 
+  // Timer
   // create a timer to update the time colors every 2 minutes
   // in case the user leaves the page open for a long time
   // and the time colors (past, present future) get out of sync
@@ -412,6 +416,7 @@ $(function() {
     diary.updateTimeColors();
   }, 120000);
 
+  // Event Handlers
   // when the user clicks one of the the save buttons, save the event to the
   // Diary.Schedule.TimeBlock, and save the diary to local storage
   $('#schedule-container').on('click', '.save-btn', function(event) {
